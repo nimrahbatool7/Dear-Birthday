@@ -32,7 +32,7 @@
           <img src="assets/a919f24e531349bd4e510b9775d972b7-removebg-preview.png" alt="Sealed envelope with quill" class="hero-envelope-img">
           <div class="hero-name-block">
             <p class="for-label">For</p>
-            <h2 class="recipient-name" data-name>Casey</h2>
+            <h2 class="recipient-name" data-name></h2>
             <p class="signature">— with love, always</p>
           </div>
         </div>
@@ -61,7 +61,10 @@
       <div class="envelope-scene">
         <div class="envelope-back"></div>
         <div class="envelope-letter" id="envelopeLetter">
-          <p class="handwritten">Some archives aren't meant to stay closed.</p>
+          <div class="letter-paper-content">
+            <p class="handwritten" id="envelopeLetterText"></p>
+            <button class="letter-close-btn" id="envelopeCloseBtn" aria-label="Close letter">&times;</button>
+          </div>
         </div>
         <div class="envelope-front"></div>
         <div class="envelope-flap" id="envelopeFlap"></div>
@@ -279,7 +282,7 @@
         </p>
 
         <h2 class="birthday-heading">Happy Birthday</h2>
-        <h3 class="birthday-name" data-name>Casey</h3>
+        <h3 class="birthday-name" data-name></h3>
 
         <div class="personal-message">
           <p>You've filled this archive with more warmth than any page could hold.</p>
@@ -292,7 +295,7 @@
 
       <div class="wish-made hidden" id="wishMade">
         <p class="handwritten wish-made-text">Wish made.</p>
-        <h2 class="birthday-heading final">Happy Birthday, <span data-name>Casey</span></h2>
+        <h2 class="birthday-heading final">Happy Birthday</h2>
       </div>
     </div>
   </section>

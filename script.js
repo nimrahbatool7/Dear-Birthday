@@ -69,36 +69,55 @@ function initHero() {
   const overlay = document.getElementById('envelopeOverlay');
   const flap = document.getElementById('envelopeFlap');
   const letter = document.getElementById('envelopeLetter');
+  const closeBtn = document.getElementById('envelopeCloseBtn');
 
   openBtn.addEventListener('click', () => {
     heroPaper.classList.add('lifting');
     overlay.classList.add('active');
     overlay.setAttribute('aria-hidden', 'false');
 
-    setTimeout(() => flap.classList.add('open'), 400);
-    setTimeout(() => letter.classList.add('slide-out'), 900);
+    // Step 1: Flap opens
+    setTimeout(() => flap.classList.add('open'), 500);
+    
+    // Step 2: Paper slides upward/outward
+    setTimeout(() => letter.classList.add('slide-out'), 1200);
 
+    // Step 3: Paper settles and types/fades in message, triggers celebration
     setTimeout(() => {
+      letter.classList.add('settled');
+      typeMessage();
+      spawnHeroCelebration();
+    }, 2500);
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
       overlay.classList.remove('active');
       overlay.setAttribute('aria-hidden', 'true');
       flap.classList.remove('open');
-      letter.classList.remove('slide-out');
-
+      letter.classList.remove('slide-out', 'settled');
+      
       revealSection('memories');
       setTimeout(() => scrollToSection('memories'), 200);
       setTimeout(() => revealSection('secrets'), 800);
       setTimeout(() => revealSection('gift'), 1200);
       setTimeout(() => revealSection('celebration'), 1600);
-    }, 2800);
-  });
+    });
+  }
 
-  document.getElementById('waxSealBtn').addEventListener('click', () => {
-    showNote('Sealed with intention. Opened with love.');
-  });
+  const waxSealBtn = document.getElementById('waxSealBtn');
+  if (waxSealBtn) {
+    waxSealBtn.addEventListener('click', () => {
+      showNote('Sealed with intention. Opened with love.');
+    });
+  }
 
-  document.getElementById('stampBtn').addEventListener('click', () => {
-    showToast('Approved by the archive keeper.');
-  });
+  const stampBtn = document.getElementById('stampBtn');
+  if (stampBtn) {
+    stampBtn.addEventListener('click', () => {
+      showToast('Approved by the archive keeper.');
+    });
+  }
 }
 
 /* ─── Polaroids ─── */
@@ -145,13 +164,19 @@ function initEnvelopes() {
 }
 
 function initHiddenItems() {
-  document.getElementById('flowerBtn').addEventListener('click', () => {
-    showNote('Pressed between pages — a memory that never wilted.');
-  });
+  const flowerBtn = document.getElementById('flowerBtn');
+  if (flowerBtn) {
+    flowerBtn.addEventListener('click', () => {
+      showNote('Pressed between pages — a memory that never wilted.');
+    });
+  }
 
-  document.getElementById('clockBtn').addEventListener('click', () => {
-    showNote('Time passes. Some things only grow sweeter.');
-  });
+  const clockBtn = document.getElementById('clockBtn');
+  if (clockBtn) {
+    clockBtn.addEventListener('click', () => {
+      showNote('Time passes. Some things only grow sweeter.');
+    });
+  }
 }
 
 function showNote(text) {
@@ -394,5 +419,71 @@ function initDust() {
       animation-delay: ${Math.random() * 10}s;
     `;
     container.appendChild(particle);
+  }
+}
+
+function typeMessage() {
+  const textEl = document.getElementById('envelopeLetterText');
+  if (!textEl) return;
+  
+  const message = `Dear Casey,
+
+Some archives aren't meant to stay closed. Sealed with intention, opened with love.
+
+Pressed between pages — memories that never wilted. Time passes, but some things only grow sweeter.
+
+With love, always.`;
+
+  textEl.innerHTML = '';
+  let index = 0;
+  
+  function type() {
+    if (index < message.length) {
+      const char = message[index++];
+      if (char === '\n') {
+        textEl.innerHTML += '<br>';
+      } else {
+        textEl.innerHTML += char;
+      }
+      setTimeout(type, 35);
+    } else {
+      const closeBtn = document.getElementById('envelopeCloseBtn');
+      if (closeBtn) closeBtn.classList.add('visible');
+    }
+  }
+  
+  setTimeout(type, 500);
+}
+
+function spawnHeroCelebration() {
+  const container = document.getElementById('heroCelebration');
+  if (!container) return;
+  container.innerHTML = '';
+  
+  const colors = ['#6B1D2F', '#B8737B', '#F5EBE0', '#C4A482', '#4A5340', '#D4AF37'];
+  
+  // Spawn 30 confetti pieces
+  for (let i = 0; i < 40; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'hero-confetti-piece';
+    piece.style.background = colors[i % colors.length];
+    piece.style.left = `${Math.random() * 100}%`;
+    piece.style.top = `-5%`;
+    piece.style.animationDelay = `${Math.random() * 1.5}s`;
+    piece.style.animationDuration = `${3 + Math.random() * 3}s`;
+    if (Math.random() > 0.5) piece.style.borderRadius = '50%';
+    container.appendChild(piece);
+  }
+  
+  // Spawn 12 rising balloons
+  for (let i = 0; i < 12; i++) {
+    const balloon = document.createElement('div');
+    balloon.className = 'hero-balloon';
+    balloon.style.background = colors[i % colors.length];
+    balloon.style.left = `${10 + Math.random() * 80}%`;
+    balloon.style.bottom = `-20%`;
+    balloon.style.animationDelay = `${Math.random() * 2}s`;
+    balloon.style.animationDuration = `${6 + Math.random() * 4}s`;
+    container.appendChild(balloon);
   }
 }

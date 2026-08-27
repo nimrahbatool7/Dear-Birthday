@@ -511,21 +511,75 @@ button {
   left: 20px;
   right: 20px;
   background: var(--parchment);
+  border: 1px solid rgba(196, 164, 130, 0.4);
   padding: 1.5rem;
   transform: translateY(60%);
-  transition: transform 1s var(--ease-lift) 0.4s;
+  transition: transform 1.2s var(--ease-lift) 0.4s, width 0.8s var(--ease-lift), height 0.8s var(--ease-lift), left 0.8s var(--ease-lift), bottom 0.8s var(--ease-lift);
   z-index: 1;
   box-shadow: var(--shadow-paper);
+  box-sizing: border-box;
 }
 
 .envelope-letter.slide-out {
-  transform: translateY(-30%);
+  transform: translateY(-110%);
+  z-index: 10;
+}
+
+.envelope-letter.settled {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  width: min(550px, 92vw);
+  height: auto;
+  min-height: 300px;
+  z-index: 9999;
+  background: var(--parchment);
+  border: 1px solid var(--kraft);
+  box-shadow: var(--shadow-lift);
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-paper-content {
+  width: 100%;
+  text-align: center;
+  position: relative;
 }
 
 .envelope-letter .handwritten {
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 3.5vw, 1.45rem);
   color: var(--crimson);
+  line-height: 1.5;
   text-align: center;
+  margin: 0;
+}
+
+.letter-close-btn {
+  position: absolute;
+  top: -2.5rem;
+  right: -3.5rem;
+  font-size: 2.2rem;
+  color: var(--crimson);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  z-index: 10000;
+}
+
+.letter-close-btn.visible {
+  opacity: 0.7;
+  pointer-events: auto;
+}
+
+.letter-close-btn:hover {
+  opacity: 1;
 }
 
 /* ═══════════════════ MEMORIES ═══════════════════ */
@@ -538,12 +592,15 @@ button {
 
 .bunting-deco {
   position: absolute;
-  top: -1rem;
+  top: -1.5rem;
   left: 50%;
   transform: translateX(-50%);
-  width: min(400px, 80%);
-  opacity: 0.7;
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  opacity: 0.85;
   pointer-events: none;
+  object-fit: contain;
 }
 
 .lights-deco {
@@ -692,8 +749,7 @@ button {
   transform: rotateY(180deg);
 }
 
-.postcard-front,
-.postcard-back {
+.postcard-front {
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
@@ -717,20 +773,29 @@ button {
 }
 
 .postcard-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
   transform: rotateY(180deg);
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--parchment);
+  border: 1px solid var(--kraft);
+  box-shadow: var(--shadow-paper);
+  padding: 2.2rem 2.8rem;
+  box-sizing: border-box;
 }
 
 .postcard-lines {
-  text-align: left;
+  text-align: center;
   width: 100%;
 }
 
 .postcard-lines .handwritten {
-  font-size: 1.2rem;
-  color: var(--espresso);
+  font-size: 1.15rem;
+  color: var(--crimson);
+  line-height: 1.45;
 }
 
 .postmark {
@@ -887,12 +952,18 @@ button {
 
 .note-paper {
   background: var(--parchment);
-  padding: 2.5rem 3rem;
-  max-width: 400px;
+  border: 1px solid var(--kraft);
   box-shadow: var(--shadow-lift);
+  padding: 3rem 3.5rem;
+  width: min(540px, 92vw);
+  min-height: 250px;
   position: relative;
   transform: translateY(20px) rotate(-1deg);
   transition: transform 0.6s var(--ease-lift);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .note-reveal.active .note-paper {
@@ -900,20 +971,26 @@ button {
 }
 
 .note-paper .handwritten {
-  font-size: 1.6rem;
+  font-size: clamp(1.25rem, 3.5vw, 1.55rem);
   color: var(--crimson);
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.4;
+  margin: 0;
+  width: 100%;
 }
 
 .note-close {
   position: absolute;
-  top: 0.5rem;
-  right: 0.75rem;
-  font-size: 1.5rem;
-  color: var(--espresso);
-  opacity: 0.4;
+  top: 1.5rem;
+  right: 2.2rem;
+  font-size: 2.2rem;
+  color: var(--crimson);
+  opacity: 0.6;
   transition: opacity 0.3s;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  z-index: 10;
 }
 
 .note-close:hover {
@@ -1396,14 +1473,25 @@ button {
   position: absolute;
   top: 1.5rem;
   right: 2rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: var(--parchment);
-  opacity: 0.7;
-  transition: opacity 0.3s;
+  opacity: 0.8;
+  transition: opacity 0.3s, background-color 0.3s;
+  z-index: 8600;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .lightbox-close:hover {
   opacity: 1;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 /* ═══════════════════ TOAST ═══════════════════ */
@@ -1518,4 +1606,60 @@ button {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* Expansion of candle touch target */
+.candle::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  background: transparent;
+  z-index: 5;
+}
+
+/* Hero celebration styling */
+.hero-confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
+  animation: heroConfettiFall linear forwards;
+  z-index: 21;
+}
+
+@keyframes heroConfettiFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+
+.hero-balloon {
+  position: absolute;
+  width: 45px;
+  height: 56px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  opacity: 0.85;
+  box-shadow: inset -4px -4px 8px rgba(0,0,0,0.1);
+  animation: heroBalloonRise ease-in-out forwards;
+  z-index: 22;
+}
+
+.hero-balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  width: 1px;
+  height: 20px;
+  background: var(--espresso);
+  opacity: 0.4;
+  transform: translateX(-50%);
+}
+
+@keyframes heroBalloonRise {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  50% { transform: translateY(-50vh) scale(1.05) rotate(10deg); }
+  100% { transform: translateY(-130vh) scale(1) rotate(-10deg); opacity: 0; }
 }
