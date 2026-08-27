@@ -334,6 +334,28 @@ button {
   border: 2px solid var(--crimson);
   position: relative;
   transition: transform 0.3s var(--ease-paper), background 0.3s;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.btn-archive-cta {
+  font-size: clamp(0.75rem, 2.2vw, 0.9rem);
+  padding: 1rem 2.25rem;
+  letter-spacing: 0.18em;
+  box-shadow: 0 2px 12px rgba(107, 29, 47, 0.12);
+}
+
+.btn-archive-cta:hover {
+  background: rgba(107, 29, 47, 0.08);
+  box-shadow: 0 4px 16px rgba(107, 29, 47, 0.18);
+}
+
+.hero-celebration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 20;
 }
 
 .btn-stamped:hover {
@@ -446,8 +468,10 @@ button {
 
 .envelope-scene {
   position: relative;
-  width: 320px;
-  height: 220px;
+  width: min(360px, 88vw);
+  height: 240px;
+  perspective: 900px;
+  transform-style: preserve-3d;
 }
 
 .envelope-back,

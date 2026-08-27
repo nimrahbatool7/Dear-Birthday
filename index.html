@@ -29,7 +29,7 @@
 
       <div class="hero-center">
         <div class="hero-photo-area">
-          <img src="assets/a919f24e531349bd4e510b9775d972b7.jpg" alt="Sealed envelope with quill" class="hero-envelope-img">
+          <img src="assets/a919f24e531349bd4e510b9775d972b7-removebg-preview.png" alt="Sealed envelope with quill" class="hero-envelope-img">
           <div class="hero-name-block">
             <p class="for-label">For</p>
             <h2 class="recipient-name" data-name>Casey</h2>
@@ -38,10 +38,12 @@
         </div>
       </div>
 
-      <button class="btn-stamped" id="openArchiveBtn" aria-label="Open the archive">
+      <button class="btn-stamped btn-archive-cta" id="openArchiveBtn" aria-label="Click here to open the archive">
         <span class="stamp-ring"></span>
-        Open the Archive
+        Click Here to Open the Archive
       </button>
+
+      <div class="hero-celebration" id="heroCelebration" aria-hidden="true"></div>
 
       <div class="hero-hidden">
         <button class="hidden-item wax-seal-btn" id="waxSealBtn" aria-label="Break the wax seal">
@@ -70,8 +72,8 @@
   <!-- ═══════════════════ MEMORY SCRAPBOOK ═══════════════════ -->
   <section id="memories" class="section memories hidden-section">
     <div class="section-inner">
-      <img src="assets/3b380d4f5ef8dae5011e1c486b735d66.jpg" alt="" class="bunting-deco" aria-hidden="true">
-      <img src="assets/3ae439f9493634761f1a30752a165d33.jpg" alt="" class="lights-deco" aria-hidden="true">
+      <img src="assets/3b380d4f5ef8dae5011e1c486b735d66-removebg-preview.png" alt="" class="bunting-deco" aria-hidden="true">
+      <!-- <img src="assets/3ae439f9493634761f1a30752a165d33.jpg" alt="" class="lights-deco" aria-hidden="true"> -->
 
       <h2 class="section-title">Collected Memories</h2>
       <p class="section-subtitle handwritten-sm">fragments from the past, kept close</p>
@@ -109,21 +111,7 @@
           <figcaption class="polaroid-caption">Still life, still beautiful.</figcaption>
         </article>
 
-        <!-- Polaroid 3 -->
-        <article class="polaroid" data-tilt style="--rotate: -1.5deg">
-          <div class="polaroid-inner">
-            <div class="polaroid-front">
-              <img src="assets/00ef539e1fd06720e9b97307688c74a2.jpg" alt="Vintage radio">
-              <span class="tape tape-bl"></span>
-              <button class="flip-corner" aria-label="Flip photograph"></button>
-            </div>
-            <div class="polaroid-back">
-              <p class="handwritten">the soundtrack of us</p>
-              <p>Old songs on an older radio. You hummed along.</p>
-            </div>
-          </div>
-          <figcaption class="polaroid-caption">Tuned to the right frequency.</figcaption>
-        </article>
+       
 
         <!-- Polaroid 4 -->
         <article class="polaroid" data-tilt style="--rotate: 4deg">
@@ -177,7 +165,7 @@
         <div class="postcard" id="postcard">
           <div class="postcard-inner">
             <div class="postcard-front">
-              <img src="assets/f6363511ee13f1ad212fdde768b03faf.jpg" alt="Postcard front">
+              <img src="assets/f6363511ee13f1ad212fdde768b03faf-removebg-preview.png" alt="Postcard front">
               <p class="postcard-label">Greetings from somewhere beautiful</p>
             </div>
             <div class="postcard-back">
@@ -200,7 +188,9 @@
       <p class="section-subtitle">Some things were tucked away on purpose.</p>
 
       <div class="envelopes-scatter">
-        <button class="mini-envelope obvious" data-note="There are some things photographs can't remember.">
+        <button class="mini-envelope obvious" data-note="Time passes. Some things only grow sweeter.
+
+.">
           <span class="env-body"></span>
           <span class="env-flap"></span>
           <span class="env-label">Open Me</span>
@@ -209,11 +199,13 @@
         <button class="mini-envelope subtle" data-note="I've been saving this one for a while.">
           <span class="env-body"></span>
           <span class="env-flap"></span>
+          <span class="env-label">Open Me</span>
         </button>
 
         <button class="mini-envelope subtle" data-note="You're the reason ordinary days feel extraordinary.">
           <span class="env-body"></span>
           <span class="env-flap"></span>
+          <span class="env-label">Open Me</span>
         </button>
       </div>
 
@@ -222,10 +214,7 @@
         <img src="assets/flower.jpg" alt="Dried flowers">
       </button>
 
-      <!-- Hidden clock -->
-      <button class="hidden-clock" id="clockBtn" aria-label="Inspect the clock">
-        <img src="assets/cc5fdb858a5d2fb16f083627d2cc5dab.jpg" alt="Antique clock">
-      </button>
+      
 
       <div class="note-reveal" id="noteReveal" aria-live="polite">
         <div class="note-paper">
@@ -243,7 +232,8 @@
 
       <div class="gift-stage" id="giftStage">
         <button class="gift-box" id="giftBox" aria-label="Open the gift">
-          <img src="assets/f6363511ee13f1ad212fdde768b03faf.jpg" alt="Wrapped gift" class="gift-img">
+          <!-- <img src="assets/f6363511ee13f1ad212fdde768b03faf-removebg-preview.png" alt="Postcard front"> -->
+          <img src="assets/f6363511ee13f1ad212fdde768b03faf-removebg-preview.png" alt="Wrapped gift" class="gift-img">
           <div class="gift-lid" aria-hidden="true"></div>
         </button>
 
@@ -261,8 +251,8 @@
   <!-- ═══════════════════ BIRTHDAY REVEAL ═══════════════════ -->
   <section id="celebration" class="section celebration hidden-section">
     <div class="section-inner celebration-inner">
-      <img src="assets/27d9faadee1c14f07bb618edb4bb059a.jpg" alt="" class="vine-deco" aria-hidden="true">
-      <img src="assets/download (2).png" alt="" class="hearts-deco" aria-hidden="true">
+      <!-- <img src="assets/27d9faadee1c14f07bb618edb4bb059a.jpg" alt="" class="vine-deco" aria-hidden="true"> -->
+      <!-- <img src="assets/download (2).png" alt="" class="hearts-deco" aria-hidden="true"> -->
 
       <div class="cake-container" id="cakeContainer">
         <div class="cake">
@@ -296,8 +286,8 @@
           <p class="handwritten">Here's to you — today and every day after.</p>
         </div>
 
-        <img src="assets/0edb860fec81bab6bb2818b4477dcf50.jpg" alt="" class="rose-deco" aria-hidden="true">
-        <img src="assets/6cad2a08cfe110bde9eaa70e9fc43cd4.jpg" alt="" class="heart-sticker" aria-hidden="true">
+        <!-- <img src="assets/0edb860fec81bab6bb2818b4477dcf50.jpg" alt="" class="rose-deco" aria-hidden="true"> -->
+        <!-- <img src="assets/6cad2a08cfe110bde9eaa70e9fc43cd4.jpg" alt="" class="heart-sticker" aria-hidden="true"> -->
       </div>
 
       <div class="wish-made hidden" id="wishMade">
@@ -316,7 +306,7 @@
 
   <!-- Hidden message toast -->
   <div class="toast hidden" id="toast" aria-live="polite"></div>
-
+l
   <script src="script.js"></script>
 </body>
 </html>
