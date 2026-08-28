@@ -221,14 +221,18 @@ button {
 .lace-corner {
   position: absolute;
   width: 120px;
-  opacity: 0.35;
+  opacity: 0.45;
   pointer-events: none;
 }
-
 .lace-tl {
-  top: -10px;
-  left: -10px;
-  transform: rotate(-15deg);
+  top: 0px;
+  left: 0px;
+  transform: rotate(0deg);
+}
+.lace-tr {
+  top: 0px;
+  right: 0px;
+  transform: scaleX(-1);
 }
 
 .hero-frame-deco {
