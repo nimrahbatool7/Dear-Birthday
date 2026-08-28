@@ -2,7 +2,7 @@
  * Case Archive — Frontend interactions
  * Change RECIPIENT_NAME to personalize the site.
  */
-const RECIPIENT_NAME = 'Casey';
+const RECIPIENT_NAME = '';
 
 const BALLOON_MESSAGES = [
   'You make ordinary days less ordinary.',
@@ -36,6 +36,10 @@ function applyName() {
   document.querySelectorAll('[data-name]').forEach(el => {
     el.textContent = RECIPIENT_NAME;
   });
+  if (!RECIPIENT_NAME) {
+    const forLabel = document.querySelector('.for-label');
+    if (forLabel) forLabel.style.display = 'none';
+  }
 }
 
 function showToast(message, duration = 3500) {
@@ -426,9 +430,8 @@ function typeMessage() {
   const textEl = document.getElementById('envelopeLetterText');
   if (!textEl) return;
   
-  const message = `Dear Casey,
-
-Some archives aren't meant to stay closed. Sealed with intention, opened with love.
+  const greeting = RECIPIENT_NAME ? `Dear ${RECIPIENT_NAME},\n\n` : '';
+  const message = `${greeting}Some archives aren't meant to stay closed. Sealed with intention, opened with love.
 
 Pressed between pages — memories that never wilted. Time passes, but some things only grow sweeter.
 
