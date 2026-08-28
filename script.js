@@ -5,12 +5,12 @@
 const RECIPIENT_NAME = '';
 
 const BALLOON_MESSAGES = [
-  'You make ordinary days less ordinary.',
-  "Here's to another chapter.",
-  'Still one of my favorite people.',
+  'May God bless your steps with peace, grace, and joy.',
+  "May your life be guided by grace and surrounded by love.",
+  'May God grant you peace, purpose, and endless blessings..',
   'Some archives are built on laughter.',
-  'Thank you for being you.',
-  'Every page here has your name on it.',
+  'Never lose the little spark that makes you, you',
+  'May the light that is uniquely yours always remain.',
 ];
 
 const BALLOON_COLORS = [
@@ -431,11 +431,11 @@ function typeMessage() {
   if (!textEl) return;
   
   const greeting = RECIPIENT_NAME ? `Dear ${RECIPIENT_NAME},\n\n` : '';
-  const message = `${greeting}Some archives aren't meant to stay closed. Sealed with intention, opened with love.
+  const message = `${greeting}May God bless every step you take and fill your years with peace, grace, and countless blessings.
 
-Pressed between pages — memories that never wilted. Time passes, but some things only grow sweeter.
+May your prayers be answered, your heart remain at peace, and your path always lead toward goodness.
 
-With love, always.`;
+May God keep you under His care and bless you with many beautiful years to come.`;
 
   textEl.innerHTML = '';
   let index = 0;
@@ -448,14 +448,14 @@ With love, always.`;
       } else {
         textEl.innerHTML += char;
       }
-      setTimeout(type, 35);
+      setTimeout(type, 10);
     } else {
       const closeBtn = document.getElementById('envelopeCloseBtn');
       if (closeBtn) closeBtn.classList.add('visible');
     }
   }
   
-  setTimeout(type, 500);
+  setTimeout(type, 800);
 }
 
 function spawnHeroCelebration() {

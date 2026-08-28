@@ -592,13 +592,14 @@ button {
 
 .bunting-deco {
   position: absolute;
-  top: -1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  top: -9rem; /* Shifte higher up (adjust between -3rem and -5rem as needed) */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   width: 100%;
   max-width: 1100px;
   height: auto;
-  opacity: 0.85;
+  opacity: 0.35; /* Lowered opacity for a subtle background feel */
   pointer-events: none;
   object-fit: contain;
 }
@@ -614,11 +615,12 @@ button {
 
 .scrapbook-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 2rem 1.5rem;
-  padding: 1rem 0;
+  grid-template-columns: repeat(2, 1fr); /* Forces exactly 2 items per row */
+  gap: 2rem; /* Adjust space between items as needed */
+  max-width: 800px; /* Limits overall grid width to keep polaroids centered and nicely sized */
+  margin: 0 auto; /* Centers the grid container */
+  justify-items: center; /* Keeps individual polaroids centered in their grid cells */
 }
-
 .polaroid {
   transform: rotate(var(--rotate, 0deg));
   transition: transform 0.4s var(--ease-paper), box-shadow 0.4s;
@@ -727,7 +729,7 @@ button {
 
 /* Postcard */
 .postcard-wrapper {
-  margin-top: 4rem;
+  margin-top: 10rem;
   display: flex;
   justify-content: center;
 }
